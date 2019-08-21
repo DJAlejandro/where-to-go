@@ -25,7 +25,8 @@ export default {
             touchStatus: false,
             startY: 0,
             timer: null,
-            nowKey: "A"
+            nowKey: "A",
+            moved: false
         };
     },
     computed: {
@@ -56,6 +57,7 @@ export default {
             this.touchStatus = true;
         },
         handleTouchMove(e) {
+            this.moved = true;
             if (this.touchStatus) {
                 if (this.timer) {
                     clearTimeout(this.timer);
@@ -73,6 +75,11 @@ export default {
         },
         handleTouchEnd(e) {
             this.touchStatus = false;
+
+            if (!this.moved) {
+                this.$emit("change", e.target.innerText);
+            }
+            this.moved = false;
         }
     }
 };

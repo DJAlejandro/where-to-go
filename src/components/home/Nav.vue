@@ -17,6 +17,7 @@
 
 <script>
 export default {
+    name: "HomeNav",
     props: ["navList"],
     data() {
         return {

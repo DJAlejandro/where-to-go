@@ -15,6 +15,7 @@
 
 <script>
 export default {
+    name: "DetailHeader",
     data() {
         return {
             styleObj: {
@@ -39,19 +40,19 @@ export default {
             }
         }
     },
-    mounted() {
-        console.log("mounted");
-    },
-    unmounted() {
-        console.log("unmounted");
-    },
+    // mounted() {
+    //     console.log("mounted");
+    // },
+    // unmounted() {
+    //     console.log("unmounted");
+    // },
     activated() {
-        console.log("activated");
+        // console.log("activated");
 
         window.addEventListener("scroll", this.handleScroll);
     },
     deactivated() {
-        console.log("deactivated");
+        // console.log("deactivated");
 
         window.removeEventListener("scroll", this.handleScroll);
     }

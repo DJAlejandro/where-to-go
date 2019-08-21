@@ -18,6 +18,7 @@
 
 <script type="text/javascript">
 export default {
+    name: "HomeRecommend",
     props: ["recommendList"],
     data() {
         return {};
