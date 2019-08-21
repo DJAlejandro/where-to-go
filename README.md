@@ -194,3 +194,13 @@ export default {
 - [Vue keep-alive实践总结](https://www.cnblogs.com/sysuhanyf/p/7454530.html)
 - [vue 路由 按需 keep-alive](https://juejin.im/post/5cdcbae9e51d454759351d84)
 - [Vue的钩子函数[路由导航守卫、keep-alive、生命周期钩子]](https://juejin.im/post/5b41bdef6fb9a04fe63765f1)
+
+
+### name
+
+
+允许组件模板递归地调用自身
+
+当在有 vue-devtools, 未命名组件将显示成 <AnonymousComponent>, 这很没有语义。通过提供 name 选项，可以获得更有语义信息的组件树
+   
+keep-alive exclude指定的名字
