@@ -132,3 +132,20 @@ fastClick.attach(document.body)
 - [如何解决 touchstart 事件与 click 事件的冲突](https://juejin.im/post/5aa09afe51882555602077be)
 - [也来说说touch事件与点击穿透问题](https://juejin.im/entry/5963383bf265da6c3a54dfa7)
 - [你真的了解FastClick吗？](https://www.cnblogs.com/ylweb/p/10549040.html)
+
+
+### keep-alive
+
+
+> <keep-alive> 包裹动态组件时，会缓存不活动的组件实例，而不是销毁它们。和 <transition> 相似，<keep-alive> 是一个抽象组件：它自身不会渲染一个 DOM 元素，也不会出现在父组件链中。
+
+> 当组件在 <keep-alive> 内被切换，它的 **activated** 和 **deactivated** 这两个生命周期钩子函数将会被对应执行。
+    
+> include - 字符串或正则表达式。只有匹配的组件会被缓存。
+> exclude - 字符串或正则表达式。任何匹配的组件都不会被缓存。
+
+##### activated在组件第一次渲染时会被调用，之后在每次缓存组件被激活时调用
+
+- [Vue keep-alive实践总结](https://www.cnblogs.com/sysuhanyf/p/7454530.html)
+- [vue 路由 按需 keep-alive](https://juejin.im/post/5cdcbae9e51d454759351d84)
+- [Vue的钩子函数[路由导航守卫、keep-alive、生命周期钩子]](https://juejin.im/post/5b41bdef6fb9a04fe63765f1)
