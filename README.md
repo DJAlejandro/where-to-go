@@ -53,3 +53,64 @@ stylus的样式穿透 使用>>>
 ```
 
 - [Vue中的scoped和scoped穿透](https://segmentfault.com/a/1190000015932467)
+
+
+### [axios](https://github.com/axios/axios)
+
+```
+ npm install axios --save
+ ```
+ 
+ ```
+ import axios from "axios";
+
+axios.get('/user', {
+    params: {
+      ID: 12345
+    }
+  })
+  .then(function (response) {
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  })
+  .finally(function () {
+    // always executed
+  });  
+
+```
+ 
+ 
+ ### mock ( vue/cli 3.0 )
+ 
+ 把静态文件放入 public 文件下
+ 
+ ```
+ // 静态数据存放的位置
+public/mock/home.json
+```
+
+创建一个 vue.config.js 文件放在根目录下
+
+```
+module.exports = {
+  devServer: {
+    proxy: {
+      '/api': {
+        target: 'http://localhost:8080',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/api': '/mock'
+        }
+      }
+    }
+  }
+}
+```
+
+```
+axios
+ .get('/api/home.json')
+ .then(this.handler)
+```
