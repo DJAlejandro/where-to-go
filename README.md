@@ -1,11 +1,11 @@
-### border：1px
+## border：1px
 
 - [移动端border：1px问题解决方案](https://www.cnblogs.com/yaokunlun/p/6545393.html)
 - [移动端1px解决方案 1px border.css](https://blog.csdn.net/qq_36407748/article/details/80958774)
 
 
 
-### padding-bottom
+## padding-bottom
 
 - 通过设置padding-bottom固定宽高比，让含有资源文件的元素占位，放在在低网速下加载资源过程中出现“抖动”
 
@@ -17,7 +17,7 @@
 
 - [CSS实现宽高等比例自适应矩形](https://juejin.im/post/5b0784566fb9a07abd0e14ae)
 
-### scoped穿透
+## scoped穿透
 
 > scoped看起来很好用，当时在Vue项目中，当我们引入第三方组件库时(如使用vue-awesome-swiper实现移动端轮播)，需要在局部组件中修改第三方组件库的样式，而又不想去除scoped属性造成组件之间的样式覆盖。这时我们可以通过特殊的方式穿透scoped。
 
@@ -41,7 +41,7 @@ stylus的样式穿透 使用>>>
 - [Vue中的scoped和scoped穿透](https://segmentfault.com/a/1190000015932467)
 
 
-### [axios](https://github.com/axios/axios)
+## [axios](https://github.com/axios/axios)
 
 ```
  npm install axios --save
@@ -68,7 +68,7 @@ axios.get('/user', {
 ```
  
  
- ### mock ( vue/cli 3.0 )
+ ## mock ( vue/cli 3.0 )
  
  把静态文件放入 public 文件下
  
@@ -105,7 +105,7 @@ axios
 
 
 
-### touch/click与[fastclick](https://github.com/ftlabs/fastclick)
+## touch/click与[fastclick](https://github.com/ftlabs/fastclick)
 
 
 - 移动端浏览器触摸事件: touchstart、touchmove、touchend、touchcancel
@@ -134,7 +134,7 @@ fastClick.attach(document.body)
 - [你真的了解FastClick吗？](https://www.cnblogs.com/ylweb/p/10549040.html)
 
 
-### keep-alive
+## keep-alive
 
 
 > <keep-alive> 包裹动态组件时，会缓存不活动的组件实例，而不是销毁它们。和 <transition> 相似，<keep-alive> 是一个抽象组件：它自身不会渲染一个 DOM 元素，也不会出现在父组件链中。
@@ -196,11 +196,14 @@ export default {
 - [Vue的钩子函数[路由导航守卫、keep-alive、生命周期钩子]](https://juejin.im/post/5b41bdef6fb9a04fe63765f1)
 
 
-### name
+## name
 
 
-允许组件模板递归地调用自身
+- 允许组件模板递归地调用自身
 
-当在有 vue-devtools, 未命名组件将显示成 <AnonymousComponent>, 这很没有语义。通过提供 name 选项，可以获得更有语义信息的组件树
+- 当在有 vue-devtools, 未命名组件将显示成 <AnonymousComponent>, 这很没有语义。通过提供 name 选项，可以获得更有语义信息的组件树
    
-keep-alive exclude指定的名字
+- keep-alive exclude指定的名字
+
+- [Vue一个案例引发的递归组件的使用](https://juejin.im/post/5bed05ac6fb9a04a053f3d60)
+- [vue递归组件的用法](https://blog.csdn.net/badmoonc/article/details/80380557)
