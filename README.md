@@ -3,20 +3,6 @@
 - [移动端border：1px问题解决方案](https://www.cnblogs.com/yaokunlun/p/6545393.html)
 - [移动端1px解决方案 1px border.css](https://blog.csdn.net/qq_36407748/article/details/80958774)
 
-### [fastclick](https://github.com/ftlabs/fastclick)
-
-```
-npm install fastclick --save
-```
-
-```
-//main.js
-
-import fastClick from 'fastclick'
-fastClick.attach(document.body)
-```
-
-- [你真的了解FastClick吗？](https://www.cnblogs.com/ylweb/p/10549040.html)
 
 
 ### padding-bottom
@@ -116,3 +102,26 @@ axios
 ```
 
 - [Vue CLI 3.0脚手架如何在本地配置mock数据](https://blog.csdn.net/qq_32135281/article/details/84312100)
+
+
+
+### touch/click与[fastclick](https://github.com/ftlabs/fastclick)
+
+preventDefault 方法的作用在于：阻止元素默认事件行为的发生，但有意思的是，当我们在目标元素同时绑定 touchstart 和 click 事件时，在 touchstart 事件回调函数中使用preventDefault方法，可以阻止后续 click 事件的发生
+
+
+```
+npm install fastclick --save
+```
+
+```
+//main.js
+
+import fastClick from 'fastclick'
+fastClick.attach(document.body)
+```
+
+
+- [如何解决 touchstart 事件与 click 事件的冲突](https://juejin.im/post/5aa09afe51882555602077be)
+- [也来说说touch事件与点击穿透问题](https://juejin.im/entry/5963383bf265da6c3a54dfa7)
+- [你真的了解FastClick吗？](https://www.cnblogs.com/ylweb/p/10549040.html)
