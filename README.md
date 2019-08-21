@@ -114,3 +114,5 @@ axios
  .get('/api/home.json')
  .then(this.handler)
 ```
+
+- [Vue CLI 3.0脚手架如何在本地配置mock数据](https://blog.csdn.net/qq_32135281/article/details/84312100)
