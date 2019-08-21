@@ -107,6 +107,13 @@ axios
 
 ### touch/click与[fastclick](https://github.com/ftlabs/fastclick)
 
+
+- 移动端浏览器触摸事件: touchstart、touchmove、touchend、touchcancel
+- 触摸列表: touches、targetTouches、changedTouches
+- 属性: clientX、clientY、identifier、pageX、pageY、screenX、screenY、target
+
+
+
 preventDefault 方法的作用在于：阻止元素默认事件行为的发生，但有意思的是，当我们在目标元素同时绑定 touchstart 和 click 事件时，在 touchstart 事件回调函数中使用preventDefault方法，可以阻止后续 click 事件的发生
 
 
@@ -121,7 +128,7 @@ import fastClick from 'fastclick'
 fastClick.attach(document.body)
 ```
 
-
+- [触摸事件 touchstart、touchmove、touchend](https://blog.csdn.net/wangmx1993328/article/details/83270166) 
 - [如何解决 touchstart 事件与 click 事件的冲突](https://juejin.im/post/5aa09afe51882555602077be)
 - [也来说说touch事件与点击穿透问题](https://juejin.im/entry/5963383bf265da6c3a54dfa7)
 - [你真的了解FastClick吗？](https://www.cnblogs.com/ylweb/p/10549040.html)
