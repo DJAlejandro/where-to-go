@@ -138,6 +138,8 @@ fastClick.attach(document.body)
 
 
 > <keep-alive> 包裹动态组件时，会缓存不活动的组件实例，而不是销毁它们。和 <transition> 相似，<keep-alive> 是一个抽象组件：它自身不会渲染一个 DOM 元素，也不会出现在父组件链中。
+    
+    
 
 > 当组件在 <keep-alive> 内被切换，它的 **activated** 和 **deactivated** 这两个生命周期钩子函数将会被对应执行。
     
@@ -146,6 +148,49 @@ fastClick.attach(document.body)
 
 ##### activated在组件第一次渲染时会被调用，之后在每次缓存组件被激活时调用
 
+因为使用keep-alive后，组件不会被销毁，所以组件切换时,mounted钩子不会被调用。依据这个特点，可以只让组件在第一次加载后在mounted钩子中发一次axios请求，而后在满足条件时才再次发送axios请求
+
+
+```
+<script>
+import axios from "axios";
+import { mapState } from "vuex";
+
+export default {
+    data() {
+        return {
+            lastCity: ""
+        };
+    },
+    methods: {
+        getHomeInfo() {
+            axios
+                .get("/api/index.json?city=" + this.city)
+                .then(this.getHomeInfoSucc);
+        },
+        getHomeInfoSucc(res) {
+            res = res.data;
+            if (res.ret && res.data) {
+                const data = res.data;
+                ...
+            }
+        }
+    },
+    computed: {
+        ...mapState(["city"])
+    },
+    mounted() {
+        this.lastCity = this.city;
+        this.getHomeInfo();
+    },
+    activated() {
+        if (this.lastCity !== this.city) {
+            this.lastCity = this.city;
+            this.getHomeInfo();
+        }
+    }
+};
+```
 - [Vue keep-alive实践总结](https://www.cnblogs.com/sysuhanyf/p/7454530.html)
 - [vue 路由 按需 keep-alive](https://juejin.im/post/5cdcbae9e51d454759351d84)
 - [Vue的钩子函数[路由导航守卫、keep-alive、生命周期钩子]](https://juejin.im/post/5b41bdef6fb9a04fe63765f1)
