@@ -33,9 +33,7 @@ export default {
             hotCities: [],
             letter: "",
             letter2: "",
-
-            cityScorllTop: [],
-            len: 0
+            cityScorllTop: []
         };
     },
     methods: {
@@ -48,13 +46,9 @@ export default {
                 const data = res.data;
                 this.cities = data.cities;
                 this.hotCities = data.hotCities;
-
+                let len = 0;
                 for (var key in this.cities) {
-                    // console.log("key." + key + " = " + this.cities[key].length);
-
-                    let len = this.len + 27 + 38 * this.cities[key].length;
-                    this.len = len;
-
+                    len = len + 27 + 38 * this.cities[key].length;
                     this.cityScorllTop.push(len);
                 }
             }
@@ -71,5 +65,3 @@ export default {
     }
 };
 </script>
-
-<style lang="stylus" scoped></style>

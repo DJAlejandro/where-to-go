@@ -1,7 +1,6 @@
 <template>
     <div class="list" ref="wrapper">
         <div>
-            <!-- 注意 better-scroll 只处理容器的第一个子元素（content）的滚动。，所以要再“包一层”-->
             <div class="title">当前城市</div>
             <div class="button-list">
                 <div class="button-wrapper">
@@ -10,17 +9,18 @@
             </div>
             <div class="title">热门城市</div>
             <div class="button-list">
-                <div class="button-wrapper" v-for="item in hot">
-                    <div class="button" @touchstart="changeCity(item.name)">{{item.name}}</div>
+                <div class="button-wrapper" v-for="item in hot" :key="item.id">
+                    <div class="button" @click="changeCity(item.name)">{{item.name}}</div>
                 </div>
             </div>
             <template>
-                <ul class="item-list" v-for="(city,key) in cities" :ref="key">
+                <ul class="item-list" v-for="(city,key) in cities" :ref="key" :key="key">
                     <div class="title">{{key}}</div>
                     <li
                         class="item border-bottom"
                         v-for="item in city"
                         @click="changeCity(item.name)"
+                        :key="item.id"
                     >{{item.name}}</li>
                 </ul>
             </template>
@@ -55,7 +55,6 @@ export default {
     },
     methods: {
         changeCity(data) {
-            // this.$store.commit("increment", data);
             this.increment(data);
             this.$router.push("/");
         },
@@ -78,8 +77,6 @@ export default {
                     click: true,
                     probeType: 3
                 });
-
-                // probeType:如果没有设置该值，其默认值为 0，即不派发 scroll 事件。
                 this.scrollList.on("scroll", pos => {
                     let scrollTop = 0;
                     scrollTop = Math.abs(Math.round(pos.y)) - 180;
@@ -99,6 +96,7 @@ export default {
                             this.activeIndex = i + 1;
                         }
                     }
+
                     this.$emit("change", this.letters[this.activeIndex]);
                 });
             }

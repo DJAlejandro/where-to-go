@@ -36,7 +36,6 @@ export default {
     },
     methods: {
         changeCity(data) {
-            // this.$store.commit("increment", data);
             this.increment(data);
             this.$router.push("/");
             this.cityName = "";

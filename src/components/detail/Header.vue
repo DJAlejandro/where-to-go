@@ -8,7 +8,8 @@
         <div class="header-fixed" :style="styleObj" v-show="!showAbs">
             <router-link to="/">
                 <div class="header-fixed-back iconfont">&#xe624;</div>
-            </router-link>景点详情
+            </router-link>
+            <p>景点详情</p>
         </div>
     </div>
 </template>
@@ -26,8 +27,9 @@ export default {
     },
     methods: {
         handleScroll() {
-            console.log("scrolling");
             let sctop = document.documentElement.scrollTop;
+            console.log(sctop);
+
             this.showAbs = sctop === 0 ? true : false;
             if (sctop > 50) {
                 let opacity = sctop / 150;
@@ -40,20 +42,10 @@ export default {
             }
         }
     },
-    // mounted() {
-    //     console.log("mounted");
-    // },
-    // unmounted() {
-    //     console.log("unmounted");
-    // },
     activated() {
-        // console.log("activated");
-
         window.addEventListener("scroll", this.handleScroll);
     },
     deactivated() {
-        // console.log("deactivated");
-
         window.removeEventListener("scroll", this.handleScroll);
     }
 };
