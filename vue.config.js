@@ -6,14 +6,18 @@ module.exports = {
     devServer: {
         proxy: {
             '/api': {
-                target: 'http://localhost:8080',
-                changeOrigin: true,
+                target: 'http://localhost:80',
                 pathRewrite: {
-                    '^/api': 'mock'
+                    '^/api': '/api'
                 }
+                // target: 'http://localhost:8080',
+                // changeOrigin: true,
+                // pathRewrite: {
+                //     '^/api': 'mock'
+                // }
             }
         },
-        port: 8080
+        // port: 8080
     },
     configureWebpack: config => {
         config.resolve = {
