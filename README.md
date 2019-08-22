@@ -246,3 +246,19 @@ module.exports = {
     ...
 }
 ```
+
+## 打包上线
+
+```
+npm run build
+```
+
+将dist文件夹下的文件全部复制到php服务器的根路径下，服务器会自动寻找html文件，然后打开服务器的地址即可访问
+
+
+![](https://github.com/DJAlejandro/where-to-go/blob/master/img/03.png)
+
+![](https://github.com/DJAlejandro/where-to-go/blob/master/img/04.png)
+
+![](https://github.com/DJAlejandro/where-to-go/blob/master/img/05.png)
+
