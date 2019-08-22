@@ -221,8 +221,9 @@ export default {
 
 在开发模式下，请求数据的接口来自后端，实现这个功能，首先将json数据复制到php服务器根目录下的指定目录（本例为api目录）
 
+![](https://github.com/DJAlejandro/where-to-go/blob/master/img/01.png)
 
-
+![](https://github.com/DJAlejandro/where-to-go/blob/master/img/02.png)
 
 然后将devServer的proxy代理端口指向后台服务器地址。以本地搭建的PHP服务器（PHP服务器默认地址为http://localhost:80）为例，配置如下
 
