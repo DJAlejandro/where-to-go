@@ -214,3 +214,51 @@ export default {
 - [小米手机如何进入开发者设置选项](https://jingyan.baidu.com/article/09ea3ede437a2ec0aede399e.html)
 - [手机web前端调试页面的几种方式](https://juejin.im/entry/5afd1b276fb9a07acc11ec81)
 - [移动端调试——五款前端开发利器](https://www.cnblogs.com/zhangruiqi/p/9509934.html)
+
+
+## 前后端联调
+
+
+在开发模式下，请求数据的接口来自后端，实现这个功能，首先将json数据复制到php服务器根目录下的指定目录（本例为api目录）
+
+![](https://github.com/DJAlejandro/where-to-go/blob/master/img/01.png)
+
+![](https://github.com/DJAlejandro/where-to-go/blob/master/img/02.png)
+
+然后将devServer的proxy代理端口指向后台服务器地址。以本地搭建的PHP服务器（PHP服务器默认地址为http://localhost:80）为例，配置如下
+
+
+```
+module.exports = {
+    devServer: {
+        proxy: {
+            '/api': {
+                + target: 'http://localhost:80',
+                + pathRewrite: {
+                +     '^/api': '/api' //这样每次发起请求，都会转发到'http://localhost:80/api'下，这个目录下存放着json数据（后端服务器根目录下的api目录）
+                + }
+                - target: 'http://localhost:8080',
+                - pathRewrite: {
+                -     '^/api': 'mock'
+                - }
+        }
+    },
+    ...
+}
+```
+
+## 打包上线
+
+```
+npm run build
+```
+
+将dist文件夹下的文件全部复制到php服务器的根路径下，服务器会自动寻找html文件，然后打开服务器的地址即可访问
+
+
+![](https://github.com/DJAlejandro/where-to-go/blob/master/img/03.png)
+
+![](https://github.com/DJAlejandro/where-to-go/blob/master/img/04.png)
+
+![](https://github.com/DJAlejandro/where-to-go/blob/master/img/05.png)
+
