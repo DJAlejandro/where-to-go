@@ -30,7 +30,7 @@
 
 
 <script>
-import Bscroll from "better-scroll";
+import Bscroll from "@better-scroll/core";
 import { mapState, mapMutations } from "vuex";
 export default {
     name: "CityList",
@@ -44,14 +44,6 @@ export default {
         cities: Object,
         letter: String,
         cityScorllTop: Array
-    },
-    watch: {
-        letter() {
-            if (this.letter) {
-                const element = this.$refs[this.letter][0];
-                this.scrollList.scrollToElement(element);
-            }
-        }
     },
     methods: {
         changeCity(data) {
@@ -70,37 +62,55 @@ export default {
             return arr;
         }
     },
-    mounted() {
-        this.$nextTick(() => {
-            if (!this.scrollList) {
-                this.scrollList = new Bscroll(this.$refs.wrapper, {
-                    click: true,
-                    probeType: 3
-                });
-                this.scrollList.on("scroll", pos => {
-                    let scrollTop = 0;
-                    scrollTop = Math.abs(Math.round(pos.y)) - 180;
+    watch: {
+        cities() {
+            /* 移动端因网速问题，会产生在未得到city.json的情况下，初始化Bscroll的情况。此时，cities为空数组，item-list渲染出的高度为0，无法触发页面滚动。因此将this.$nextTick设置在 cities值变化，也就是拿到city.json后，这时item-list渲染出的高度是正确的，足以滚动*/
+            this.$nextTick(() => {
+                if (!this.scrollList) {
+                    this.scrollList = new Bscroll(this.$refs.wrapper, {
+                        click: true,
+                        probeType: 3
+                    });
+                    this.scrollList.on("scroll", pos => {
+                        let scrollTop = 0;
+                        scrollTop = Math.abs(Math.round(pos.y)) - 180;
 
-                    for (var i = 0; i <= this.cityScorllTop.length - 1; i++) {
-                        if (scrollTop < this.cityScorllTop[0]) {
-                            this.activeIndex = 0;
-                        } else if (
-                            scrollTop >
-                            this.cityScorllTop[this.cityScorllTop.length - 1]
+                        for (
+                            var i = 0;
+                            i <= this.cityScorllTop.length - 1;
+                            i++
                         ) {
-                            this.activeIndex = this.cityScorllTop.length - 1;
-                        } else if (
-                            this.cityScorllTop[i] < scrollTop &&
-                            this.cityScorllTop[i + 1] > scrollTop
-                        ) {
-                            this.activeIndex = i + 1;
+                            if (scrollTop < this.cityScorllTop[0]) {
+                                this.activeIndex = 0;
+                            } else if (
+                                scrollTop >
+                                this.cityScorllTop[
+                                    this.cityScorllTop.length - 1
+                                ]
+                            ) {
+                                this.activeIndex =
+                                    this.cityScorllTop.length - 1;
+                            } else if (
+                                this.cityScorllTop[i] < scrollTop &&
+                                this.cityScorllTop[i + 1] > scrollTop
+                            ) {
+                                this.activeIndex = i + 1;
+                            }
                         }
-                    }
 
-                    this.$emit("change", this.letters[this.activeIndex]);
-                });
+                        this.$emit("change", this.letters[this.activeIndex]);
+                    });
+                } else {
+                    this.scrollList.refresh();
+                }
+            });
+        },
+        letter() {
+            if (this.letter) {
+                const element = this.$refs[this.letter][0];
+                this.scrollList.scrollToElement(element);
             }
-        });
+        }
     }
 };
 </script>

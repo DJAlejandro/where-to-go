@@ -82,7 +82,6 @@ export default {
         handleTouchEnd(e) {
             this.touchStatus = false;
             this.isShow = false;
-
             if (!this.moved) {
                 this.$emit("change", e.target.innerText);
             }
@@ -93,7 +92,7 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-@import '~../../assets/styles/varibles.styl';
+@import '~styles/varibles.styl';
 
 .show-banner {
     position: absolute;

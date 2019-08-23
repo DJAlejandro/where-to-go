@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import Bscroll from "better-scroll";
+import Bscroll from "@better-scroll/core";
 import { mapMutations } from "vuex";
 
 export default {
@@ -42,9 +42,13 @@ export default {
         },
         ...mapMutations(["increment"])
     },
-    mounted() {
+    created() {
         this.$nextTick(() => {
-            this.scroll = new Bscroll(this.$refs.search, { click: true });
+            if (!this.scroll) {
+                this.scroll = new Bscroll(this.$refs.search, { click: true });
+            } else {
+                this.scroll.refresh();
+            }
         });
     },
     watch: {
