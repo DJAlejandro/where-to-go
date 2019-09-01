@@ -1,9 +1,3 @@
-## border：1px
-
-- [移动端border：1px问题解决方案](https://www.cnblogs.com/yaokunlun/p/6545393.html)
-- [移动端1px解决方案 1px border.css](https://blog.csdn.net/qq_36407748/article/details/80958774)
-
-
 
 ## padding-bottom
 
