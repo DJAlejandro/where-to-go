@@ -8,7 +8,7 @@
         "dll": "webpack --color  --config ./webpack.dll.js"
     },
     "dependencies": {
-        "axios": "^0.18.0",
+        "axios": "^0.21.1",
         "better-scroll": "^2.0.0-alpha.20",
         "fastclick": "^1.0.6",
         "portfinder": "^1.0.21",
